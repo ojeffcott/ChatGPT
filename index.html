@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #chatbox {
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+            overflow: auto;
+        }
+        #userInput {
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div id="chatbox"></div>
+    <input type="text" id="userInput" placeholder="Type your message here..." />
+    <button onclick="sendMessage()">Send</button>
+    <input type="file" id="fileInput" onchange="handleFileUpload()" />
+    <script>
+        function sendMessage() {
+            var userInput = document.getElementById('userInput').value;
+            var chatbox = document.getElementById('chatbox');
+            chatbox.innerHTML += 'User: ' + userInput + '<br>';
+            // Here you would typically send the user's message to your chatbot and get a response
+            var botResponse = 'This is a placeholder response';
+            chatbox.innerHTML += 'Bot: ' + botResponse + '<br>';
+            document.getElementById('userInput').value = '';
+        }
+
+        function handleFileUpload() {
+            var fileInput = document.getElementById('fileInput').files[0];
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var contents = e.target.result;
+                // Here you would typically process the contents of the uploaded file
+                console.log(contents);
+            };
+            reader.readAsText(fileInput);
+        }
+    </script>
+</body>
+</html>
